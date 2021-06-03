@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -21,7 +22,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
- 
   final String title;
 
   @override
@@ -36,14 +36,14 @@ class _MyHomePageState extends State<MyHomePage> {
     _localRenderer.dispose();
     super.dispose();
   }
-  
+
   @override
   void initState() {
     initRenderers();
     _getUserMedia();
     super.initState();
   }
-  
+
   initRenderers() async {
     await _localRenderer.initialize();
   }
@@ -56,19 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     };
 
-    MediaStream stream = await navigator.mediaDevices.getUserMedia(meidaConstraints);
+    MediaStream stream =
+        await navigator.mediaDevices.getUserMedia(meidaConstraints);
 
     _localRenderer.srcObject = stream;
   }
-  
-  
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
       ),
       body: Center(
@@ -87,7 +84,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-
       ),
     );
   }
